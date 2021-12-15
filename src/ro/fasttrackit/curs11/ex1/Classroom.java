@@ -51,14 +51,13 @@ public class Classroom {
         return student;
     }
 
-    public double getAverageGrade(String discipline){
-        double averageGrade;
-        double sum=0;
+    public int getAverageGrade(String discipline){
+        int sum=0;
         int numitor=getGradesForDiscipline(discipline).size();
         for (int grade: getGradesForDiscipline(discipline)){
             sum+=grade;
         }
-        return averageGrade = sum/numitor;
+        return sum/numitor;
     }
 
     public StudentGrade getWorstGrade(String discipline) {
