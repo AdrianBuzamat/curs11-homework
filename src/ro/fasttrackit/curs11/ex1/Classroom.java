@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Classroom {
-    private List<StudentGrade> list;
+    private List<StudentGrade> studentsList;
 
-    public Classroom(String path) throws Exception {
-        this.list = new CustomReader(path).getList();
+    public Classroom(List<StudentGrade> studentsList) {
+        this.studentsList = studentsList;
     }
 
     public List<Integer> getGradesForDiscipline(String discipline) {
         List<Integer> gradesForDiscipline = new ArrayList<>();
-        for (StudentGrade person : list) {
+        for (StudentGrade person : studentsList) {
             if (discipline.equalsIgnoreCase(person.getDiscipline())) {
                 gradesForDiscipline.add(person.getGrade());
             }
@@ -22,7 +22,7 @@ public class Classroom {
 
     public StudentGrade getGradesForStudent(String studentName) {
         StudentGrade findStudent = null;
-        for (StudentGrade person : list) {
+        for (StudentGrade person : studentsList) {
             if (studentName.equalsIgnoreCase(person.getName())) {
                 findStudent = person;
             }
@@ -32,7 +32,7 @@ public class Classroom {
         
     public StudentGrade getMaxGrade(String discipline) {
         StudentGrade student = null;
-        for (StudentGrade person : list) {
+        for (StudentGrade person : studentsList) {
             if (discipline.equalsIgnoreCase(person.getDiscipline())
                     && (student == null || person.getGrade() > student.getGrade())) {
                 student=person;
@@ -43,7 +43,7 @@ public class Classroom {
 
     public StudentGrade getMaxGrade() {
         StudentGrade student=null;
-        for (StudentGrade person : list) {
+        for (StudentGrade person : studentsList) {
             if (student == null || person.getGrade() > student.getGrade()) {
                 student = person;
             }
@@ -62,21 +62,12 @@ public class Classroom {
 
     public StudentGrade getWorstGrade(String discipline) {
         StudentGrade student = null;
-        for (StudentGrade person : list) {
+        for (StudentGrade person : studentsList) {
             if (discipline.equalsIgnoreCase(person.getDiscipline())
                     && (student == null || person.getGrade() < student.getGrade())) {
                 student=person;
             }
         }
         return student;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Classroom{" +
-                "list=" + list +
-                '}';
     }
 }

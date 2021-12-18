@@ -40,7 +40,7 @@ public class StudentGrade {
 
     @Override
     public String toString() {
-        return "StudentGrade{" +
+        return "{" +
                 "name='" + name + '\'' +
                 ", discipline='" + discipline + '\'' +
                 ", grade=" + grade +

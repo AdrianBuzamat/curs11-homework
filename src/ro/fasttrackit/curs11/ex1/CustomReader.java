@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomReader {
-    private List<StudentGrade> list;
+
     private FileReader file;
 
     public CustomReader(String path) throws FileNotFoundException {
@@ -15,12 +15,12 @@ public class CustomReader {
 
     public List<StudentGrade> getList() throws Exception {
         BufferedReader myReader = new BufferedReader(file);
-        this.list=new ArrayList<>();
+        List<StudentGrade> result =new ArrayList<>();
         String line;
         while((line=myReader.readLine()) !=null){
-            list.add(readPerson(line));
+            result.add(readPerson(line));
         }
-        return list;
+        return result;
     }
 
     private StudentGrade readPerson(String line) {
